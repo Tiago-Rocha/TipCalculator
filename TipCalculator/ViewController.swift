@@ -8,9 +8,9 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITextFieldDelegate {
+class ViewController: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var totalTextField : UITextField!
+    @IBOutlet var totalTextField : UITextField!
     @IBOutlet var taxPctSlider : UISlider!
     @IBOutlet var taxPctLabel : UILabel!
     @IBOutlet var resultsTextView : UITextView!
@@ -19,6 +19,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITextFieldDelega
     let tipCalc = TipCalculatorModel(total: 33.25, taxPct: 0.06)
     var possibleTips = Dictionary<Int, (tipAmount:Double, total:Double)>()
     var sortedKeys:[Int] = []
+   
     /*
      * To delete
      */
@@ -30,9 +31,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITextFieldDelega
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //refreshUI()
+        refreshUI()
     }
-
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?){
+        NSLog("touches began")
+        view.endEditing(true)
+        super.touchesBegan(touches, withEvent: event)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -50,19 +56,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITextFieldDelega
         taxPctLabel.text = "Tax Percentage (\(Int(taxPctSlider.value))%)"
         calculateTapped(sender)
     }
-    
     @IBAction func viewTapped(sender : AnyObject) {
         //dismiss keyboard
         totalTextField.resignFirstResponder()
     }
     
-    @IBAction func userTappedBackground(sender : AnyObject){
-        view.endEditing(true)
-    }
-    
-    func textFieldShouldreturn(totalTextField: UITextField!) -> Bool {
+    @IBAction func dismissKeyboardyeah(sender: UIControl) {
+        NSLog("dismiss keyboardyeah")
         totalTextField.resignFirstResponder()
-        return true
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -80,6 +81,5 @@ class ViewController: UIViewController, UITableViewDataSource, UITextFieldDelega
         cell.detailTextLabel?.text = String(format:"Tip: $%0.2f, Total: $%0.2f", tipAmt, total)
         return cell
     }
-    
 
 }

@@ -14,7 +14,7 @@
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="UIControl">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -36,13 +36,14 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                 <connections>
-                                    <action selector="total:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="OTe-WJ-2Nk"/>
                                     <action selector="viewTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="N6L-MO-2zr"/>
+                                    <outlet property="delegate" destination="8bC-Xf-vdC" id="WVK-DT-WIC"/>
                                 </connections>
                             </textField>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="X3b-Nk-ftC">
                                 <rect key="frame" x="188" y="116" width="400" height="31"/>
                                 <connections>
+                                    <action selector="dismissKeyboardyeah:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3dq-dp-GGf"/>
                                     <action selector="taxPercentageChanged:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1Cy-Zb-LIX"/>
                                 </connections>
                             </slider>
@@ -86,7 +87,6 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="evJ-MM-1rw"/>
-                                    <outlet property="delegate" destination="8bC-Xf-vdC" id="XJt-7t-ZtQ"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -110,6 +110,8 @@
                             <constraint firstItem="HHe-mm-iQL" firstAttribute="leading" secondItem="Ut8-D4-O1D" secondAttribute="trailing" constant="1" id="zuQ-xn-THs"/>
                         </constraints>
                         <connections>
+                            <action selector="dismissKeyboardyeah:" destination="BYZ-38-t0r" eventType="touchDown" id="M9w-vb-u94"/>
+                            <action selector="dismissKeyboardyeah:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pvU-br-y83"/>
                             <outletCollection property="gestureRecognizers" destination="P8e-vB-MlO" appends="YES" id="U1b-5c-Zjj"/>
                         </connections>
                     </view>
