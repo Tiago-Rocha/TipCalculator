@@ -45,38 +45,62 @@
                                     <action selector="taxPercentageChanged:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1Cy-Zb-LIX"/>
                                 </connections>
                             </slider>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fib-OB-Spk">
-                                <rect key="frame" x="16" y="192" width="568" height="400"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GP1-UP-2tq">
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="U69-3Q-wkg">
                                 <rect key="frame" x="268" y="154" width="64" height="30"/>
-                                <state key="normal" title="Calculate"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="sBr-IF-opr">
+                                        <rect key="frame" x="0.0" y="0.0" width="64" height="30"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="bZ6-bm-4xk">
+                                                <rect key="frame" x="0.0" y="0.0" width="64" height="30"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Lzu-Ls-GTp">
+                                                        <rect key="frame" x="0.0" y="0.0" width="64" height="30"/>
+                                                        <subviews>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="84v-KY-Oz8">
+                                                                <rect key="frame" x="0.0" y="0.0" width="64" height="30"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GP1-UP-2tq">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="64" height="30"/>
+                                                                        <state key="normal" title="Calculate"/>
+                                                                        <connections>
+                                                                            <action selector="calculateTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3kd-0n-sZ6"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                            </stackView>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bnW-3a-81A">
+                                <rect key="frame" x="0.0" y="192" width="600" height="400"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
-                                    <action selector="calculateTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3kd-0n-sZ6"/>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="evJ-MM-1rw"/>
+                                    <outlet property="delegate" destination="8bC-Xf-vdC" id="XJt-7t-ZtQ"/>
                                 </connections>
-                            </button>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="fib-OB-Spk" firstAttribute="top" secondItem="GP1-UP-2tq" secondAttribute="bottom" constant="8" symbolic="YES" id="8pC-IS-ech"/>
+                            <constraint firstItem="Ut8-D4-O1D" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="13" id="6Di-Be-WVo"/>
+                            <constraint firstAttribute="trailing" secondItem="bnW-3a-81A" secondAttribute="trailing" id="BCJ-K3-mKN"/>
                             <constraint firstItem="HHe-mm-iQL" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="13" id="G19-2s-gCX"/>
-                            <constraint firstItem="Ut8-D4-O1D" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="13" id="L0i-lV-Nkc"/>
-                            <constraint firstItem="HHe-mm-iQL" firstAttribute="trailing" secondItem="fib-OB-Spk" secondAttribute="trailing" id="UZc-Za-kPu"/>
-                            <constraint firstItem="GP1-UP-2tq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="259" id="XlV-kT-VZO"/>
-                            <constraint firstItem="fib-OB-Spk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-4" id="aTi-N1-fqJ"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="bnW-3a-81A" secondAttribute="bottom" constant="8" symbolic="YES" id="VwL-xD-3Tv"/>
+                            <constraint firstItem="bnW-3a-81A" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Xsc-ug-WMX"/>
                             <constraint firstItem="Ut8-D4-O1D" firstAttribute="leading" secondItem="rsP-Un-7ES" secondAttribute="leading" id="bTG-UZ-zFT"/>
                             <constraint firstItem="X3b-Nk-ftC" firstAttribute="centerY" secondItem="rsP-Un-7ES" secondAttribute="centerY" id="bgj-Xe-jUj"/>
-                            <constraint firstItem="fib-OB-Spk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="dHC-zG-KVd"/>
                             <constraint firstItem="X3b-Nk-ftC" firstAttribute="top" secondItem="HHe-mm-iQL" secondAttribute="bottom" constant="9" id="gpl-Pn-hvi"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="HHe-mm-iQL" secondAttribute="trailing" constant="-4" id="jus-lo-8LV"/>
                             <constraint firstItem="HHe-mm-iQL" firstAttribute="centerX" secondItem="X3b-Nk-ftC" secondAttribute="centerX" id="lnV-b9-DN0"/>
-                            <constraint firstItem="GP1-UP-2tq" firstAttribute="top" secondItem="X3b-Nk-ftC" secondAttribute="bottom" constant="8" symbolic="YES" id="mGX-W6-fTi"/>
                             <constraint firstItem="HHe-mm-iQL" firstAttribute="centerY" secondItem="Ut8-D4-O1D" secondAttribute="centerY" id="nZg-hK-kYg"/>
                             <constraint firstItem="X3b-Nk-ftC" firstAttribute="leading" secondItem="rsP-Un-7ES" secondAttribute="trailing" constant="10" id="p3w-g6-gLH"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="fib-OB-Spk" secondAttribute="bottom" constant="8" symbolic="YES" id="pXs-2A-8Se"/>
                             <constraint firstItem="HHe-mm-iQL" firstAttribute="leading" secondItem="Ut8-D4-O1D" secondAttribute="trailing" constant="1" id="zuQ-xn-THs"/>
                         </constraints>
                         <connections>
@@ -85,7 +109,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Tip Calculator" id="f4K-fF-AY5"/>
                     <connections>
-                        <outlet property="resultsTextView" destination="fib-OB-Spk" id="DQ9-H2-IUX"/>
+                        <outlet property="tableView" destination="bnW-3a-81A" id="H2V-DY-jla"/>
                         <outlet property="taxPctLabel" destination="rsP-Un-7ES" id="6gu-zf-fOJ"/>
                         <outlet property="taxPctSlider" destination="X3b-Nk-ftC" id="XN2-GG-r28"/>
                         <outlet property="totalTextField" destination="HHe-mm-iQL" id="Hi1-3i-tJJ"/>
